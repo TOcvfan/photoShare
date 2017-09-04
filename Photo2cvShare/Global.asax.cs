@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Photo2cvShare.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +13,8 @@ namespace Photo2cvShare
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<PhotoSharingContext>(new PhotoSharingInitializer());
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
