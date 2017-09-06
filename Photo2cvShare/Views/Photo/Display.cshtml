@@ -9,69 +9,30 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Display</title>
+    <title>@Model.Title</title>
 </head>
 <body>
-    <div>
-        <h4>Photo</h4>
-        <hr />
-        <div class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-    
-            <div>
-                @Html.DisplayFor(model => model.Title)
-            </div>
-            @if (Model.PhotoFile != null) {
-                <img width="800" src="@Url.Action("GetImage", "Photo", new { id=Model.PhotoID })"/>
-            }
+    <div> 
+        <h2>@Model.Title</h2>
+        <img width="800" src="@Url.Action("GetImage", "Photo", new { id=Model.PhotoID })" />
 
-            <div>
-                @Html.DisplayNameFor(model => model.ImageMimeType)
-            </div>
-    
-            <div>
-                @Html.DisplayFor(model => model.ImageMimeType)
-            </div>
-    
-            <div>
-                @Html.DisplayNameFor(model => model.PhotoFile)
-            </div>
-    
-            <div>
-                @Html.DisplayFor(model => model.PhotoFile)
-            </div>
-    
-            <div>
-                @Html.DisplayNameFor(model => model.Description)
-            </div>
-    
-            <div>
-                @Html.DisplayFor(model => model.Description)
-            </div>
-    
-            <div>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </div>
-    
-            <div>
-                @Html.DisplayFor(model => model.CreatedDate)
-            </div>
-    
-            <div>
-                @Html.DisplayNameFor(model => model.UserName)
-            </div>
-    
-            <div>
-                @Html.DisplayFor(model => model.UserName)
-            </div>
-    
-        </div>
+        <p>
+            @Html.DisplayNameFor(model => model.Description)
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.UserName):
+            @Html.DisplayFor(model => model.UserName)
+
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.CreatedDate):
+            @Html.DisplayFor(model => model.CreatedDate)
+
+        </p>
+        <p>
+            @Html.ActionLink("Back to list", "Index")
+
+        </p>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.PhotoID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 </body>
 </html>

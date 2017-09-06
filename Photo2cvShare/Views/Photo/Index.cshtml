@@ -1,6 +1,4 @@
-﻿@model IEnumerable<Photo2cvShare.Models.Photo>
-
-@{
+﻿@{
     Layout = null;
 }
 
@@ -9,63 +7,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>All Photos</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageMimeType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoFile)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageMimeType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoFile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.PhotoID }) |
-                @Html.ActionLink("Details", "Display", new { id=item.PhotoID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.PhotoID })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <div> 
+        <h2>All Photos</h2>
+        <p>
+            @Html.ActionLink("Add a Photo", "Create", "Photo")
+        </p>
+
+        @Html.Action("_PhotoGallery", "Photo")
+    </div>
 </body>
 </html>

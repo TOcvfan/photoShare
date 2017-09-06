@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Photo2cvShare.Models.Photo>
+@foreach (var item in Model) {
+    <h3>"@item.Title"</h3>
+    if (item.PhotoFile != null) {
+        <img width="200" src="@Url.Action("GetImage", "Photo", new { id = item.PhotoID })" />
+    }
+    <p>
+        Added by:
+        @Html.DisplayFor(m => item.UserName)
+    </p>
+
+    <p>
+        Added on:
+        @Html.DisplayFor(m => item.CreatedDate)
+    </p>
+    @Html.ActionLink("View Image", "Display", new { id = item.PhotoID })
+}
+
+
+

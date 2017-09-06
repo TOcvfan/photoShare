@@ -1,0 +1,46 @@
+﻿@model Photo2cvShare.Models.Photo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add New Photo</title>
+</head>
+<body>
+    <div>
+        <h2>Add New Photo</h2>
+        @using (Html.BeginForm("Create", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+
+            @Html.ValidationSummary(true)
+
+            <p>
+                @Html.LabelFor(m => m.Title)
+                @Html.EditorFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.PhotoFile)
+                <input type="file" name="Image" />
+            </p>
+            <p>
+                @Html.LabelFor(m => m.UserName)
+                @Html.DisplayFor(m => m.UserName)
+                
+            </p>
+            <p>
+                @Html.LabelFor(m => m.CreatedDate)
+                @Html.DisplayFor(m => m.CreatedDate)
+            </p>
+            <p>
+                <input type="submit" name="Add Photo"/>
+                @Html.ActionLink("Back to list", "Index")
+            </p>
+        }
+    </div>
+</body>
+</html>
