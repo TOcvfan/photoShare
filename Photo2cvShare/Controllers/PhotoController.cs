@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Globalization;
 
 namespace Photo2cvShare.Controllers {
+	[ValueReporter]
 	public class PhotoController : Controller {
 
 		private PhotoSharingContext context = new PhotoSharingContext();
@@ -20,7 +22,7 @@ namespace Photo2cvShare.Controllers {
 			if (photo == null) {
 				return HttpNotFound();
 			}
-			return View("Disply", photo);
+			return View("Display", photo);
 		}
 
 		public ActionResult Create() {
@@ -60,6 +62,11 @@ namespace Photo2cvShare.Controllers {
 		public ActionResult DeleteConfirmed(int Id) {
 			Photo photo = context.Photos.Find(Id);
 			context.Photos.Remove(photo);
+			context.SaveChanges();
+			return RedirectToAction("Index");
+		}
+		public FileContentResult GetImage(int Id) {
+			Photo photo = context.Photos.Find(Id);
 			if (photo != null) {
 				return File(photo.PhotoFile, photo.ImageMimeType);
 			} else {
